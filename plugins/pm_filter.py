@@ -366,19 +366,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 )
                 await query.answer('Check Your PM, I Have Sent Files For You 😻', show_alert=True)
         except UserIsBlocked:
-            await query.answer('Unblock the bot First 😤 !', show_alert=True)
+            await query.answer('Unblock the bot First 😤  & Try Again ♻️!', show_alert=True)
         except PeerIdInvalid:
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
         except Exception as e:
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
     elif query.data.startswith("checksub"):
         if AUTH_CHANNEL and not await is_subscribed(client, query):
-            await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒", show_alert=True)
+            await query.answer("I Like Your Smartness, But Don't Be Oversmart 🥴   വേളച്ചിൽ എടുക്കരുത് കേട്ടോ 😤", show_alert=True)
             return
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
         if not files_:
-            return await query.answer('No such file exist.')
+            return await query.answer('No such file exist 🙂.')
         files = files_[0]
         title = files.file_name
         size = get_size(files.file_size)
@@ -418,7 +418,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-        await query.answer('Piracy Is Crime')
+        await query.answer('Piracy Is Crime 🚫')
     elif query.data == "help":
         buttons = [[
             InlineKeyboardButton('Manual Filter', callback_data='manuelfilter'),
@@ -565,7 +565,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if str(grp_id) != str(grpid):
             await query.message.edit("Your Active Connection Has Been Changed. Go To /settings.")
-            return await query.answer('Piracy Is Crime')
+            return await query.answer('Piracy Is Crime 🚫')
 
         if status == "True":
             await save_group_settings(grpid, set_type, False)
@@ -776,7 +776,7 @@ async def advantage_spell_chok(msg):
         )
     ] for k, movie in enumerate(movielist)]
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spolling#{user}#close_spellcheck')])
-    await msg.reply("I couldn't find anything related to that Spelling \n Did you mean any one of these? \n Choose Any Name Below 💁🏻‍♀️",
+    await msg.reply(" Found  Movie/Series Names Related to that Spelling \n Choose Any Name Below, You're Looking For  💁🏻‍♀️",
                     reply_markup=InlineKeyboardMarkup(btn))
 
 
