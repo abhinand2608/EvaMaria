@@ -41,14 +41,14 @@ async def give_filter(client, message):
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("How Dare You To Use Another Member Request 😾 ? /n സ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
+        return await query.answer("How Dare You To Use Another Member Request 😾 ?    സ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
     try:
         offset = int(offset)
     except:
         offset = 0
     search = BUTTONS.get(key)
     if not search:
-        await query.answer("You are using one of my old messages, please send the request again.", show_alert=True)
+        await query.answer("You are using one of my old messages, please send the request again ❗.", show_alert=True)
         return
 
     files, n_offset, total = await get_search_results(search, offset=offset, filter=True)
@@ -120,12 +120,12 @@ async def next_page(bot, query):
 async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
     if int(user) != 0 and query.from_user.id != int(user):
-        return await query.answer(" How Dare You To Use Another Member Request 😾 ? /n സ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
+        return await query.answer(" How Dare You To Use Another Member Request 😾 ?    സ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
     if movie_ == "close_spellcheck":
         return await query.message.delete()
     movies = SPELL_CHECK.get(query.message.reply_to_message.message_id)
     if not movies:
-        return await query.answer("You are clicking on an old button which is expired.", show_alert=True)
+        return await query.answer("You are clicking on an old button which is expired ❗.", show_alert=True)
     movie = movies[(int(movie_))]
     await query.answer('Checking for Movie in Our database...')
     k = await manual_filters(bot, query.message, text=movie)
@@ -135,7 +135,7 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            k = await query.message.edit('This Movie Not Found In Our DataBase /n Check the Movie Spelling / is Released /n May be Contact Admin By Reply to that Filename with @Admin 🙏🏻 ')
+            k = await query.message.edit('This Movie Not Found In Our 𝐭𝐡𝐞𝐟𝐢𝐥𝐦𝐲𝐬𝐩𝐨𝐭 DataBase    Check Spelling Or the Movie is Released    May be Contact Admin By Reply to that Filename with @Admin 🙏🏻 ')
             await asyncio.sleep(60)
             await k.delete()
 
@@ -157,26 +157,26 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     title = chat.title
                 except:
                     await query.message.edit_text("Make sure I'm present in your group!!", quote=True)
-                    return await query.answer('Piracy Is Crime')
+                    return await query.answer('Piracy Is Crime 🚫')
             else:
                 await query.message.edit_text(
                     "I'm not connected to any groups!\nCheck /connections or connect to any groups",
                     quote=True
                 )
-                return await query.answer('Piracy Is Crime')
+                return await query.answer('Piracy Is Crime 🚫')
 
         elif chat_type in ["group", "supergroup"]:
             grp_id = query.message.chat.id
             title = query.message.chat.title
 
         else:
-            return await query.answer('Piracy Is Crime')
+            return await query.answer('Piracy Is Crime 🚫')
 
         st = await client.get_chat_member(grp_id, userid)
         if (st.status == "creator") or (str(userid) in ADMINS):
             await del_all(query.message, grp_id, title)
         else:
-            await query.answer("You need to be Group Owner or an Auth User to do that!", show_alert=True)
+            await query.answer("You need to be Group Owner or an Admin to do that!   കളി വേണ്ട കേട്ടോ 😼❗", show_alert=True)
     elif query.data == "delallcancel":
         userid = query.from_user.id
         chat_type = query.message.chat.type
@@ -195,7 +195,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 except:
                     pass
             else:
-                await query.answer("That's not for you 🙆🏻 !! /n സ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
+                await query.answer("That's not for you 🙆🏻 !!   സ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
     elif "groupcb" in query.data:
         await query.answer()
 
@@ -224,7 +224,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=keyboard,
             parse_mode="md"
         )
-        return await query.answer('Piracy Is Crime')
+        return await query.answer('Piracy Is Crime 🚫')
     elif "connectcb" in query.data:
         await query.answer()
 
@@ -245,7 +245,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
         else:
             await query.message.edit_text('Some error occurred!!', parse_mode="md")
-        return await query.answer('Piracy Is Crime')
+        return await query.answer('Piracy Is Crime 🚫')
     elif "disconnect" in query.data:
         await query.answer()
 
@@ -268,7 +268,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f"Some error occurred!!",
                 parse_mode="md"
             )
-        return await query.answer('Piracy Is Crime')
+        return await query.answer('Piracy Is Crime 🚫')
     elif "deletecb" in query.data:
         await query.answer()
 
@@ -286,7 +286,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f"Some error occurred!!",
                 parse_mode="md"
             )
-        return await query.answer('Piracy Is Crime')
+        return await query.answer('Piracy Is Crime 🚫')
     elif query.data == "backcb":
         await query.answer()
 
@@ -297,7 +297,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.edit_text(
                 "There are no active connections!! Connect to some groups first.",
             )
-            return await query.answer('Piracy Is Crime')
+            return await query.answer('Piracy Is Crime 🚫')
         buttons = []
         for groupid in groupids:
             try:
@@ -333,7 +333,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
         if not files_:
-            return await query.answer('No such file exist.')
+            return await query.answer('No such file exist 🙂.')
         files = files_[0]
         title = files.file_name
         size = get_size(files.file_size)
@@ -364,9 +364,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     caption=f_caption,
                     protect_content=True if ident == "filep" else False 
                 )
-                await query.answer('Check PM, I have sent files in pm 😻', show_alert=True)
+                await query.answer('Check Your PM, I Have Sent Files For You 😻', show_alert=True)
         except UserIsBlocked:
-            await query.answer('Unblock the bot mahn !', show_alert=True)
+            await query.answer('Unblock the bot First 😤 !', show_alert=True)
         except PeerIdInvalid:
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
         except Exception as e:
