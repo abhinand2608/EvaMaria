@@ -406,10 +406,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
-            InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat=''),
+            InlineKeyboardButton('🔍 Search Here🔻 ', switch_inline_query_current_chat=''),
             InlineKeyboardButton(' REQUEST MOVIES 📺', url='https://t.me/thefilmyspot')
         ], [
-            InlineKeyboardButton('Help', callback_data='help'),
+            InlineKeyboardButton('Help ℹ️', callback_data='help'),
             InlineKeyboardButton('About 😌🖖🏻', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -421,14 +421,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer('Piracy Is Crime 🚫')
     elif query.data == "help":
         buttons = [[
-            InlineKeyboardButton('Manual Filter', callback_data='manuelfilter'),
-            InlineKeyboardButton('Auto Filter', callback_data='autofilter')
+            InlineKeyboardButton('✳️ Manual Filter ✳️', callback_data='manuelfilter'),
+            InlineKeyboardButton('❇️ Auto Filter ❇️ ', callback_data='autofilter')
         ], [
-            InlineKeyboardButton('Connection', callback_data='coct'),
-            InlineKeyboardButton('Extra Features', callback_data='extra')
+            InlineKeyboardButton('Connection 🔗', callback_data='coct'),
+            InlineKeyboardButton('Extra Features ➕', callback_data='extra')
         ], [
             InlineKeyboardButton('🏠 Home', callback_data='start'),
-            InlineKeyboardButton('🔮 Status', callback_data='stats')
+            InlineKeyboardButton('🚀STATUS 👀', callback_data='stats')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -436,10 +436,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-    elif query.data == "About 😌🖖🏻":
+    elif query.data == "About":
         buttons = [[
             InlineKeyboardButton('UPDATES 🔔', url='https://t.me/thefilmyspotup'),
-            InlineKeyboardButton('Support 🚨', url='https://t.me/thefilmyspotsupport')
+            InlineKeyboardButton('🚀 STATUS 👀', callback_data='stats'),
+            InlineKeyboardButton('SUPPORT 🚨', url='https://t.me/thefilmyspothelp')
         ], [
             InlineKeyboardButton('🏠 Home', callback_data='start'),
             InlineKeyboardButton('🔐 Close', callback_data='close_data')
@@ -460,7 +461,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-    elif query.data == "Manual-Filter":
+    elif query.data == "manuelfilter":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='help'),
             InlineKeyboardButton('⏹️ Buttons', callback_data='button')
@@ -471,7 +472,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-    elif query.data == "Buttons":
+    elif query.data == "button":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='manuelfilter')
         ]]
@@ -481,7 +482,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-    elif query.data == "Auto-Filter":
+    elif query.data == "autofilter":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='help')
         ]]
@@ -565,7 +566,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if str(grp_id) != str(grpid):
             await query.message.edit("Your Active Connection Has Been Changed. Go To /settings.")
-            return await query.answer('Piracy Is Crime 🚫')
+            return await query.answer('Piracy Is Crime 🚫 ')
 
         if status == "True":
             await save_group_settings(grpid, set_type, False)
