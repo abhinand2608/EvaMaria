@@ -41,14 +41,14 @@ async def give_filter(client, message):
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("How Dare You To Use Another Member Request 😾 ?    സ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
+        return await query.answer("How Dare You To Use Another Member Request 😡👊  \nസ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
     try:
         offset = int(offset)
     except:
         offset = 0
     search = BUTTONS.get(key)
     if not search:
-        await query.answer("You are using one of my old messages, please send the request again ❗.", show_alert=True)
+        await query.answer("You are using one of my old messages, \nPlease send the request again ❗.", show_alert=True)
         return
 
     files, n_offset, total = await get_search_results(search, offset=offset, filter=True)
@@ -120,7 +120,7 @@ async def next_page(bot, query):
 async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
     if int(user) != 0 and query.from_user.id != int(user):
-        return await query.answer(" How Dare You To Use Another Member Request 😾 ?    സ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
+        return await query.answer(" How Dare You To Use Another Member Request 😡👊   \nസ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
     if movie_ == "close_spellcheck":
         return await query.message.delete()
     movies = SPELL_CHECK.get(query.message.reply_to_message.message_id)
@@ -135,7 +135,7 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            k = await query.message.edit('This Movie Not Found In Our 𝐭𝐡𝐞𝐟𝐢𝐥𝐦𝐲𝐬𝐩𝐨𝐭 DataBase    Check Spelling Or the Movie is Released    May be Contact Admin By Reply to that Filename with @Admin 🙏🏻 ')
+            k = await query.message.edit('This Movie Not Found In Our 𝐭𝐡𝐞𝐟𝐢𝐥𝐦𝐲𝐬𝐩𝐨𝐭 DataBase...  \nCheck Spelling Or the Movie is Released...   \nMay be Contact Admin By Reply to that Filename with @Admin 🙏🏻 ')
             await asyncio.sleep(60)
             await k.delete()
 
@@ -176,7 +176,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if (st.status == "creator") or (str(userid) in ADMINS):
             await del_all(query.message, grp_id, title)
         else:
-            await query.answer("You need to be Group Owner or an Admin to do that!   കളി വേണ്ട കേട്ടോ 😼❗", show_alert=True)
+            await query.answer("You need to be Group Owner or an Admin to do that!   \nകളി വേണ്ട കേട്ടോ 😼❗", show_alert=True)
     elif query.data == "delallcancel":
         userid = query.from_user.id
         chat_type = query.message.chat.type
@@ -195,7 +195,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 except:
                     pass
             else:
-                await query.answer("That's not for you 🙆🏻 !!   സ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
+                await query.answer("That's not for you 🙆🏻 !!  \nസ്വന്തമായി വല്ലോം ചെയ്തുടെ 🤦🏽🚶🏼‍♂️ ", show_alert=True)
     elif "groupcb" in query.data:
         await query.answer()
 
@@ -364,16 +364,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     caption=f_caption,
                     protect_content=True if ident == "filep" else False 
                 )
-                await query.answer('Check Your PM, I Have Sent Files For You 😻', show_alert=True)
+                await query.answer('Check Your PM 📥, \nI Have Sent Files For You 😻', show_alert=True)
         except UserIsBlocked:
-            await query.answer('Unblock the bot First 😤  & Try Again ♻️!', show_alert=True)
+            await query.answer('Unblock the bot First 😤  \nThen Try Again ♻️!', show_alert=True)
         except PeerIdInvalid:
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
         except Exception as e:
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
     elif query.data.startswith("checksub"):
         if AUTH_CHANNEL and not await is_subscribed(client, query):
-            await query.answer("I Like Your Smartness, But Don't Be Oversmart 🥴   വേളച്ചിൽ എടുക്കരുത് കേട്ടോ 😤", show_alert=True)
+            await query.answer("I Like Your Smartness, But Don't Be Oversmart 🥴   \nവേളച്ചിൽ എടുക്കരുത് കേട്ടോ 😤", show_alert=True)
             return
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
@@ -421,8 +421,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer('Piracy Is Crime 🚫')
     elif query.data == "help":
         buttons = [[
-            InlineKeyboardButton('✳️ Manual Filter ✳️', callback_data='manuelfilter'),
-            InlineKeyboardButton('❇️ Auto Filter ❇️ ', callback_data='autofilter')
+            InlineKeyboardButton('🔸 Manual Filter 🔸', callback_data='manuelfilter'),
+            InlineKeyboardButton('🔹 Auto Filter 🔹 ', callback_data='autofilter')
         ], [
             InlineKeyboardButton('Connection 🔗', callback_data='coct'),
             InlineKeyboardButton('Extra Features ➕', callback_data='extra')
@@ -436,11 +436,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-    elif query.data == "About":
+    elif query.data == "about":
         buttons = [[
             InlineKeyboardButton('UPDATES 🔔', url='https://t.me/thefilmyspotup'),
-            InlineKeyboardButton('🚀 STATUS 👀', callback_data='stats'),
             InlineKeyboardButton('SUPPORT 🚨', url='https://t.me/thefilmyspothelp')
+        ], [
+            InlineKeyboardButton('🚀 STATUS 👀', callback_data='stats')
         ], [
             InlineKeyboardButton('🏠 Home', callback_data='start'),
             InlineKeyboardButton('🔐 Close', callback_data='close_data')
@@ -736,7 +737,7 @@ async def advantage_spell_chok(msg):
     g_s += await search_gagala(msg.text)
     gs_parsed = []
     if not g_s:
-        k = await msg.reply("I couldn't find any movie in that name.  Check your spelling or Search On Google 🌐")
+        k = await msg.reply("I couldn't find any movie in that name...  \nCheck your spelling or Search On Google 🌐")
         await asyncio.sleep(15)
         await k.delete()
         return
@@ -765,8 +766,8 @@ async def advantage_spell_chok(msg):
     movielist += [(re.sub(r'(\-|\(|\)|_)', '', i, flags=re.IGNORECASE)).strip() for i in gs_parsed]
     movielist = list(dict.fromkeys(movielist))  # removing duplicates
     if not movielist:
-        k = await msg.reply("I couldn't find anything related to that. Check your spelling , Search On Google 🌐 ")
-        await asyncio.sleep(15)
+        k = await msg.reply("I couldn't find anything related to that... \nCheck your spelling or Search On Google 🌐 ")
+        await asyncio.sleep(20)
         await k.delete()
         return
     SPELL_CHECK[msg.message_id] = movielist
@@ -777,7 +778,7 @@ async def advantage_spell_chok(msg):
         )
     ] for k, movie in enumerate(movielist)]
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spolling#{user}#close_spellcheck')])
-    await msg.reply(" Found  Movie/Series Names Related to that Spelling     Choose Any Name Below, You're Looking For  💁🏻‍♀️",
+    await msg.reply(" Here i Found  Movie/Series Names Related to that Spelling...    \nYou're Looking For Any Of These 👀👇🏻 ",
                     reply_markup=InlineKeyboardMarkup(btn))
 
 
