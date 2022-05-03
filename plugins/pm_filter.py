@@ -64,7 +64,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f" {get_size(file.file_size)}|  {file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"{get_size(file.file_size)} ✧ {file.file_name}", callback_data=f'files#{file.file_id}'
                 ),
             ]
             for file in files
@@ -76,7 +76,7 @@ async def next_page(bot, query):
                     text=f"{file.file_name}", callback_data=f'files#{file.file_id}'
                 ),
                 InlineKeyboardButton(
-                    text=f"{get_size(file.file_size)}",
+                    text=f"✩{get_size(file.file_size)}",
                     callback_data=f'files_#{file.file_id}',
                 ),
             ]
@@ -127,7 +127,7 @@ async def advantage_spoll_choker(bot, query):
     if not movies:
         return await query.answer("You are clicking on an old button which is expired ❗.", show_alert=True)
     movie = movies[(int(movie_))]
-    await query.answer('Checking for Movie in Our database...')
+    await query.answer('Checking for Movie in Our database 🌀...')
     k = await manual_filters(bot, query.message, text=movie)
     if k == False:
         files, offset, total_results = await get_search_results(movie, offset=0, filter=True)
@@ -136,7 +136,7 @@ async def advantage_spoll_choker(bot, query):
             await auto_filter(bot, query, k)
         else:
             k = await query.message.edit('This Movie Not Found In Our 𝐭𝐡𝐞𝐟𝐢𝐥𝐦𝐲𝐬𝐩𝐨𝐭 DataBase...  \nCheck Spelling Or the Movie is Released...   \nMay be Contact Admin By Reply to that Filename with @Admin 🙏🏻 ')
-            await asyncio.sleep(60)
+            await asyncio.sleep(45)
             await k.delete()
 
 
@@ -643,7 +643,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"{get_size(file.file_size)} |  {file.file_name}", callback_data=f'{pre}#{file.file_id}'
+                    text=f"{get_size(file.file_size)} ✧ {file.file_name}", callback_data=f'{pre}#{file.file_id}'
                 ),
             ]
             for file in files
@@ -656,7 +656,7 @@ async def auto_filter(client, msg, spoll=False):
                     callback_data=f'{pre}#{file.file_id}',
                 ),
                 InlineKeyboardButton(
-                    text=f"{get_size(file.file_size)}",
+                    text=f"◉{get_size(file.file_size)}",
                     callback_data=f'{pre}_#{file.file_id}',
                 ),
             ]
